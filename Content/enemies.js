@@ -43,7 +43,7 @@ window.Enemies = {
     src: "/images/characters/people/arifahHero.png",
     pizzas: {
       "a": {
-        pizzaId: "s002",
+        pizzaId: "004",
         maxHp: 70,
         level: 1,
       },

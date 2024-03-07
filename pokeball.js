@@ -23,6 +23,7 @@ class Pokeball extends GameObject {
         {
           events: [
             { type: "choosePokemon", pizzas: this.pizzas },
+            { type: "addStoryFlag", flag: "GOT_POKEMON" },
           ]
         }
       ]

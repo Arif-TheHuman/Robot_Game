@@ -99,21 +99,33 @@ class OverworldMap {
       return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
     });
     if (!this.isCutscenePlaying && match && match.talking.length) {
-
       const relevantScenario = match.talking.find(scenario => {
-        return (scenario.required || []).every(sf => {
-          return playerState.storyFlags[sf]
-        })
-      })
-      relevantScenario && this.startCutscene(relevantScenario.events)
+        if (scenario.required) {
+          return scenario.required.every(sf => playerState.storyFlags[sf]);
+        } else if (scenario.disqualify) {
+          return !scenario.disqualify.some(sf => playerState.storyFlags[sf]);
+        } else {
+          return true;
+        }
+      });
+      relevantScenario && this.startCutscene(relevantScenario.events);
     }
   }
-
+  
   checkForFootstepCutscene() {
     const hero = this.gameObjects["hero"];
-    const match = this.cutsceneSpaces[ `${hero.x},${hero.y}` ];
+    const match = this.cutsceneSpaces[`${hero.x},${hero.y}`];
     if (!this.isCutscenePlaying && match) {
-      this.startCutscene( match[0].events )
+      const relevantScenario = match.find(scenario => {
+        if (scenario.required) {
+          return scenario.required.every(sf => playerState.storyFlags[sf]);
+        } else if (scenario.disqualify) {
+          return !scenario.disqualify.some(sf => playerState.storyFlags[sf]);
+        } else {
+          return true;
+        }
+      });
+      relevantScenario && this.startCutscene(relevantScenario.events);
     }
   }
 }
@@ -152,19 +164,28 @@ window.OverworldMaps = {
             ]
           },
           {
-            required: ["DEFEATED_BETH"],
+            required: ["DEFEATED_KID1"],
               events: [
               { type: "textMessage", text: "You just got lucky!", faceHero: "npcA" },
             ]
           },
           {
+            required: ["GOT_POKEMON"],
             events: [
-              { type: "textMessage", text: "I'm going to crush you!", faceHero: "npcA" },
+              { type: "textMessage", text: "Looks like you finally got a Pokemon...", faceHero: "npcA" },
+              { type: "textMessage", text: "Time to crush you!"},
               { type: "battle", enemyId: "kid1" },
-              { type: "addStoryFlag", flag: "DEFEATED_BETH"},
-              { type: "textMessage", text: "You crushed me like weak pepper.", faceHero: "npcA" },
+              { type: "addStoryFlag", flag: "DEFEATED_KID1"},
+              { type: "textMessage", text: "Impossible!", faceHero: "npcA" },
               // { type: "textMessage", text: "Go away!"},
               //{ who: "hero", type: "walk",  direction: "up" },
+            ]
+          },
+          {
+            events: [
+              { type: "textMessage", text: "Haha!", faceHero: "npcA"},
+              { type: "textMessage", text: "You got no Pokemon!"},
+              { type: "textMessage", text: "Loser!"},
             ]
           }
         ]
@@ -181,7 +202,16 @@ window.OverworldMaps = {
               { type: "addStoryFlag", flag: "TALKED_TO_AZALEA"}
               //{ type: "battle", enemyId: "erio" }
             ]
-          }
+          },
+          {
+            required: ["DEFEATED_AZELEA1"],
+            events: [
+              { type: "textMessage", text: "You're quite strong!", faceHero: "npcB" },
+              { type: "textMessage", text: "If you keep it up, you'll be a champion in no time!" },
+              //{ type: "battle", enemyId: "erio" }
+            ]
+          },
+
         ]
         // behaviorLoop: [
         //   { type: "walk",  direction: "left" },
@@ -197,14 +227,34 @@ window.OverworldMaps = {
       //   y: utils.withGrid(261),
       // )
     },
-    walls: {
-      [utils.asGridCoord(7,6)] : true,
-      [utils.asGridCoord(8,6)] : true,
-      [utils.asGridCoord(7,7)] : true,
-      [utils.asGridCoord(8,7)] : true,
-    },
+    walls: function() {
+      let walls = {};
+      [
+        "4,9", "5,8"
+      ]
+      .forEach(coord => {
+        let [x,y] = coord.split(",");
+        walls[utils.asGridCoord(x,y)] = true;
+      })
+      return walls;
+    }(),
     cutsceneSpaces: {
       [utils.asGridCoord(73,261)]: [
+        {
+          disqualify: ["GOT_POKEMON"],
+          events: [
+            { type: "textMessage", text: "Hey!", faceHero: "npcB" },
+            { who: "hero", type: "walk",  direction: "down" },
+            { who: "hero", type: "stand",  direction: "up" },
+            { who: "npcB", type: "walk",  direction: "right" },
+            { type: "textMessage", text: "It's dangerous to go near the grass if you don't have a Pokemon!", faceHero: "npcB" },
+            { type: "textMessage", text: "There could be dangerous Pokemon!"},
+            { who: "npcB", type: "walk",  direction: "left" },
+            { who: "npcB", type: "stand",  direction: "down" },
+            { who: "hero", type: "walk",  direction: "down" },
+            { type: "addStoryFlag" , flag: "TALKED_TO_AZALEA"},
+          ]
+        },
         {
           events: [
             { who: "npcB", type: "stand",  direction: "right" },
@@ -213,7 +263,8 @@ window.OverworldMaps = {
             { type: "textMessage", text:"It's dangerous to get near the grass!"},
             { type: "textMessage", text:"There could be dangerous Pokemon!"},
             { type: "textMessage", text:".........."},
-            { type: "textMessage", text:"So you want to pass?"},
+            { type: "textMessage", text:"Oh, you got a pokemon?"},
+            { type: "textMessage", text:"I have to make sure that you're strong enough"},
             { type: "textMessage", text:"Alright, let's battle!"},
             { type: "battle", enemyId: "Azalea1" },
             { type: "addStoryFlag", flag: "DEFEATED_AZELEA1"},
@@ -223,7 +274,7 @@ window.OverworldMaps = {
             { type: "textMessage", text:"Azalea: I guess you're a silent type"},
             { type: "textMessage", text:"Azalea: I hope to see you stronger, champion in the making!"},
           ]
-        }
+        },
       ],
       [utils.asGridCoord(66,267)]: [
         {
@@ -257,7 +308,7 @@ window.OverworldMaps = {
   ProfessorOaksLab: {
     id: "ProfessorOaksLab",
     lowerSrc: "/images/maps/Profs_Oak_Lab.png",
-    upperSrc: "/images/maps/blank.png",
+    upperSrc: "/images/maps/Profs_Oak_Lab_Upper.png",
     gameObjects: {},
     configObjects: {
       hero:{
@@ -287,15 +338,37 @@ window.OverworldMaps = {
         pizzas: ["004"],
       },
     },
+    walls: function() {
+      let walls = {};
+      [
+      "0,12", "12,12", "0,8", "1,8", "2,8", "3,8",
+      "4,8", "8,8", "9,8", "10,8", "11,8", "12,8",
+      "8,4", "9,4", "10,4", "0,1", "1,1", "2,1",
+      "3,1","4,1","5,1","6,1", "7,1", "8,1", "9,1",
+      "10,1", "11,1", "12,1", "1,4", "1,5", "2,4",
+      "2,5", "0,3", "0,4", "-1,0", "-1,1", "-1,2",
+      "-1,3", "-1,4", "-1,5", "-1,6", "-1,7", "-1,8",
+      "-1,9", "-1,10", "-1,11", "-1,12", "0,13", "1,13",
+      "2,13", "3,13", "4,13", "5,13", "6,13", "7,13",
+      "8,13", "9,13", "10,13", "11,13", "12,13", "13,0",
+      "13,1", "13,2", "13,3", "13,4", "13,5", "13,6",
+      "13,7", "13,8", "13,9", "13,10", "13,11", "13,12",
+      ]
+      .forEach(coord => {
+        let [x,y] = coord.split(",");
+        walls[utils.asGridCoord(x,y)] = true;
+      })
+      return walls;
+    }(),
     cutsceneSpaces: {
       [utils.asGridCoord(6,12)]: [
         {
           events: [
             { 
               type: "changeMap", 
-              map: "ruins" ,
-              x: utils.withGrid(20),
-              y: utils.withGrid(20),
+              map: "Outside" ,
+              x: utils.withGrid(76),
+              y: utils.withGrid(273),
               direction: "down",
             }
           ]
