@@ -12,6 +12,7 @@ class ChoosePokemon {
           handler: () => {
             playerState.addPizza(this.pizzas);
             playerState.storyFlags[this.storyFlag] = true;
+            playerState.storyFlags["GOT_POKEMON"] = true;
             this.close();
           }
         },
