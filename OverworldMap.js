@@ -197,17 +197,17 @@ window.OverworldMaps = {
         src: "/images/characters/people/arifahHero.png",
         talking: [
           {
-            events: [
-              { type: "textMessage", text: "Howdy!", faceHero: "npcB" },
-              { type: "addStoryFlag", flag: "TALKED_TO_AZALEA"}
-              //{ type: "battle", enemyId: "erio" }
-            ]
-          },
-          {
             required: ["DEFEATED_AZELEA1"],
             events: [
               { type: "textMessage", text: "You're quite strong!", faceHero: "npcB" },
               { type: "textMessage", text: "If you keep it up, you'll be a champion in no time!" },
+              //{ type: "battle", enemyId: "erio" }
+            ]
+          },
+          {
+            events: [
+              { type: "textMessage", text: "Howdy!", faceHero: "npcB" },
+              { type: "addStoryFlag", flag: "TALKED_TO_AZALEA"}
               //{ type: "battle", enemyId: "erio" }
             ]
           },
@@ -256,6 +256,7 @@ window.OverworldMaps = {
           ]
         },
         {
+          disqualify: ["DEFEATED_AZELEA1"],
           events: [
             { who: "npcB", type: "stand",  direction: "right" },
             { type: "addStoryFlag", flag: "TALKED_TO_AZALEA"},
@@ -328,7 +329,7 @@ window.OverworldMaps = {
               { type: "textMessage", text: "Hello kiddo! Go and pick your pokemon!", faceHero:"npcB" },
             ],
           },
-        ]
+        ],
       },
       pokeball1:{
         type: "Pokeball",
@@ -426,7 +427,7 @@ window.OverworldMaps = {
   heroHome1F: {
     id: "heroHome1F",
     lowerSrc: "/images/maps/heroHome1F.png",
-    upperSrc: "/images/maps/blank.png",
+    upperSrc: "/images/maps/heroHome1F_upper.png",
     gameObjects: {},
     configObjects: {
       hero: {
