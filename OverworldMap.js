@@ -327,8 +327,9 @@ window.OverworldMaps = {
           {
             required: ["COMPLAINED"],
             events: [
-              { type: "textMessage", text: "The economy is still tough!"},
+              { type: "textMessage", text: "The economy is still tough!", faceHero:"npcB"},
               { type: "textMessage", text: "I don't have any other starters for you!"},
+              { who: "npcB", type: "stand",  direction: "down" },
             ]
           },
           {
@@ -339,6 +340,7 @@ window.OverworldMaps = {
               { type: "textMessage", text: "Its the only available pokemon?"},
               { type: "textMessage", text: "Well, you can't be picky! The economies bad!"},
               { type: "addStoryFlag", flag: "COMPLAINED"},
+              { who: "npcB", type: "stand",  direction: "down" },
             ]
           },
           {
