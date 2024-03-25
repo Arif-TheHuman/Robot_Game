@@ -1,12 +1,12 @@
 class CraftingMenu {
-  constructor({ pizzas, onComplete}) {
-    this.pizzas = pizzas;
+  constructor({ robots, onComplete}) {
+    this.robots = robots;
     this.onComplete = onComplete;
   }
 
   getOptions() {
-    return this.pizzas.map(id => {
-      const base = Pizzas[id];
+    return this.robots.map(id => {
+      const base = Robots[id];
       return {
         label: base.name,
         description: base.description,
@@ -23,7 +23,7 @@ class CraftingMenu {
     this.element.classList.add("CraftingMenu");
     this.element.classList.add("overlayMenu");
     this.element.innerHTML = (`
-      <h2>Create a Pizza</h2>
+      <h2>Create a Robot</h2>
     `)
   }
 

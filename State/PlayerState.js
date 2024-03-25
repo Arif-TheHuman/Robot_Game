@@ -1,8 +1,8 @@
 class PlayerState {
   constructor() {
-    this.pizzas = {
+    this.robots = {
       "p1": {
-        pizzaId: "001",
+        robotId: "001",
         hp: 50,
         maxHp: 50,
         xp: 0,
@@ -11,7 +11,7 @@ class PlayerState {
         status: null,
       },
       // "p2": {
-      //   pizzaId: "v001",
+      //   robotId: "v001",
       //   hp: 50,
       //   maxHp: 50,
       //   xp: 75,
@@ -20,7 +20,7 @@ class PlayerState {
       //   status: null,
       // },
       // "p3": {
-      //   pizzaId: "f001",
+      //   robotId: "f001",
       //   hp: 50,
       //   maxHp: 50,
       //   xp: 95,
@@ -44,10 +44,10 @@ class PlayerState {
     resolve();
   };
 
-  addPizza(pizzaId) {
+  addPizza(robotId) {
     const newId = `p${Date.now()}` + Math.floor(Math.random() * 100);
-    this.pizzas[newId]  = {
-      pizzaId,
+    this.robots[newId]  = {
+      robotId,
       hp: 50,
       maxHp: 50,
       xp: 0,

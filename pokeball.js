@@ -11,7 +11,7 @@ class Pokeball extends GameObject {
         currentAnimation: "unused-down"
       });
       this.storyFlag = config.storyFlag;
-      this.pizzas = config.pizzas;
+      this.robots = config.robots;
   
       this.talking = [
         {
@@ -22,7 +22,7 @@ class Pokeball extends GameObject {
         },
         {
           events: [
-            { type: "choosePokemon", pizzas: this.pizzas },
+            { type: "choosePokemon", robots: this.robots },
           ]
         }
       ]

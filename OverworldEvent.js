@@ -110,7 +110,7 @@ class OverworldEvent {
 
   craftingMenu(resolve) {
     const menu = new CraftingMenu({
-      pizzas: this.event.pizzas,
+      robots: this.event.robots,
       onComplete: () => {
         resolve();
       }
@@ -120,7 +120,7 @@ class OverworldEvent {
 
   choosePokemon(resolve) {
     const menu = new ChoosePokemon({
-        pizzas: this.event.pizzas,
+        robots: this.event.robots,
         onComplete: () => {
             resolve();
         },

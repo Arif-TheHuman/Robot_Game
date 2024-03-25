@@ -1,6 +1,6 @@
 class ChoosePokemon {
-    constructor({ pizzas, onComplete}) {
-      this.pizzas = pizzas;
+    constructor({ robots, onComplete}) {
+      this.robots = robots;
       this.onComplete = onComplete;
     }
   
@@ -10,7 +10,7 @@ class ChoosePokemon {
           label: "Yes",
           description: "Choose this Pokemon",
           handler: () => {
-            playerState.addPizza(this.pizzas);
+            playerState.addPizza(this.robots);
             playerState.storyFlags[this.storyFlag] = true;
             playerState.storyFlags["GOT_POKEMON"] = true;
             this.close();
@@ -27,7 +27,7 @@ class ChoosePokemon {
     }
   
     createElement() {
-      const pizzaName = window.Pizzas[this.pizzas].name;
+      const pizzaName = window.Robots[this.robots].name;
       this.element = document.createElement("div");
       this.element.classList.add("CraftingMenu");
       this.element.classList.add("overlayMenu");

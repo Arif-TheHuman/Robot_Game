@@ -2,14 +2,14 @@ window.Enemies = {
   "erio": {
     name: "Erio",
     src: "/images/characters/people/erio.png",
-    pizzas: {
+    robots: {
       "a": {
-        pizzaId: "s001",
+        robotId: "s001",
         maxHp: 50,
         level: 1,
       },
       "b": {
-        pizzaId: "s002",
+        robotId: "s002",
         maxHp: 50,
         level: 1,
       },
@@ -18,10 +18,10 @@ window.Enemies = {
   "beth": {
     name: "Beth",
     src: "/images/characters/people/npc1.png",
-    pizzas: {
+    robots: {
       "a": {
         hp: 1,
-        pizzaId: "f001",
+        robotId: "f001",
         maxHp: 50,
         level: 1,
       },
@@ -30,9 +30,9 @@ window.Enemies = {
   "kid1": {
     name: "Bug Catcher",
     src: "/images/characters/people/child.png",
-    pizzas: {
+    robots: {
       "a": {
-        pizzaId: "004",
+        robotId: "004",
         maxHp: 50,
         level: 1,
       }
@@ -41,9 +41,9 @@ window.Enemies = {
   "Azalea1": {
     name: "Azalea",
     src: "/images/characters/people/arifahHero.png",
-    pizzas: {
+    robots: {
       "a": {
-        pizzaId: "004",
+        robotId: "004",
         maxHp: 70,
         level: 1,
       },

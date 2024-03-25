@@ -81,10 +81,10 @@ class Sprite {
     const [frameX, frameY] = this.frame;
 
     this.isLoaded && ctx.drawImage(this.image,
-      frameX * 32, frameY * 48,
-      32,48,
+      frameX * 32, frameY * 32,
+      32,32,
       x,y,
-      32,48
+      32,32
     )
 
     this.updateAnimationProgress();

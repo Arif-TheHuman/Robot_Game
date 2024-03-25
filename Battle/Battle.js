@@ -6,7 +6,7 @@ class Battle {
 
     this.combatants = {
       // "player1": new Combatant({
-      //   ...Pizzas.s001,
+      //   ...Robots.s001,
       //   team: "player",
       //   hp: 30,
       //   maxHp: 50,
@@ -17,7 +17,7 @@ class Battle {
       //   isPlayerControlled: true
       // }, this),
       // "player2": new Combatant({
-      //   ...Pizzas.s002,
+      //   ...Robots.s002,
       //   team: "player",
       //   hp: 30,
       //   maxHp: 50,
@@ -28,7 +28,7 @@ class Battle {
       //   isPlayerControlled: true
       // }, this),
       // "enemy1": new Combatant({
-      //   ...Pizzas.v001,
+      //   ...Robots.v001,
       //   team: "enemy",
       //   hp: 1,
       //   maxHp: 50,
@@ -37,7 +37,7 @@ class Battle {
       //   level: 1,
       // }, this),
       // "enemy2": new Combatant({
-      //   ...Pizzas.f001,
+      //   ...Robots.f001,
       //   team: "enemy",
       //   hp: 25,
       //   maxHp: 50,
@@ -54,11 +54,11 @@ class Battle {
 
     //Dynamically add the Player team
     window.playerState.lineup.forEach(id => {
-      this.addCombatant(id, "player", window.playerState.pizzas[id])
+      this.addCombatant(id, "player", window.playerState.robots[id])
     });
     //Now the enemy team
-    Object.keys(this.enemy.pizzas).forEach(key => {
-      this.addCombatant("e_"+key, "enemy", this.enemy.pizzas[key])
+    Object.keys(this.enemy.robots).forEach(key => {
+      this.addCombatant("e_"+key, "enemy", this.enemy.robots[key])
     })
 
 
@@ -79,13 +79,13 @@ class Battle {
 
   addCombatant(id, team, config) {
       this.combatants[id] = new Combatant({
-        ...Pizzas[config.pizzaId],
+        ...Robots[config.robotId],
         ...config,
         team,
         isPlayerControlled: team === "player"
       }, this)
 
-      //Populate first active pizza
+      //Populate first active robot
 
       console.log(this)
       this.activeCombatants[team] = this.activeCombatants[team] || id
@@ -139,8 +139,8 @@ class Battle {
 
         if (winner === "player") {
           const playerState = window.playerState;
-          Object.keys(playerState.pizzas).forEach(id => {
-            const playerStatePizza = playerState.pizzas[id];
+          Object.keys(playerState.robots).forEach(id => {
+            const playerStatePizza = playerState.robots[id];
             const combatant = this.combatants[id];
             if (combatant) {
               playerStatePizza.hp = combatant.hp;

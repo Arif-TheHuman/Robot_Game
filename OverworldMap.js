@@ -336,7 +336,7 @@ window.OverworldMaps = {
         x: utils.withGrid(10),
         y: utils.withGrid(4),
         storyFlags: "USED_POKEBALL1",
-        pizzas: ["004"],
+        robots: ["004"],
       },
     },
     walls: function() {

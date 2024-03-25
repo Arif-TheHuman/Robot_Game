@@ -48,7 +48,7 @@ class Combatant {
     `);
 
     this.pizzaElement = document.createElement("img");
-    this.pizzaElement.classList.add("Pizza");
+    this.pizzaElement.classList.add("Robot");
     if (this.team === "player") {
         this.pizzaElement.setAttribute("src", "ally/"+this.src);
     } else if (this.team === "enemy") {
@@ -67,7 +67,7 @@ class Combatant {
       this[key] = changes[key]
     });
 
-    //Update active flag to show the correct pizza & hud
+    //Update active flag to show the correct robot & hud
     this.hudElement.setAttribute("data-active", this.isActive);
     this.pizzaElement.setAttribute("data-active", this.isActive);
 

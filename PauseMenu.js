@@ -9,8 +9,8 @@ class PauseMenu {
     //Case 1: Show the first page of options
     if (pageKey === "root") {
       const lineupPizzas = playerState.lineup.map(id => {
-        const {pizzaId} = playerState.pizzas[id];
-        const base = Pizzas[pizzaId];
+        const {robotId} = playerState.robots[id];
+        const base = Robots[robotId];
         return {
           label: base.name,
           description: base.description,
@@ -39,12 +39,12 @@ class PauseMenu {
       ]
     }
 
-    //Case 2: Show the options for just one pizza (by id)
-    const unequipped = Object.keys(playerState.pizzas).filter(id => {
+    //Case 2: Show the options for just one robot (by id)
+    const unequipped = Object.keys(playerState.robots).filter(id => {
       return playerState.lineup.indexOf(id) === -1;
     }).map(id => {
-      const {pizzaId} = playerState.pizzas[id];
-      const base = Pizzas[pizzaId];
+      const {robotId} = playerState.robots[id];
+      const base = Robots[robotId];
       return {
         label: `Swap for ${base.name}`,
         description: base.description,
@@ -59,7 +59,7 @@ class PauseMenu {
       ...unequipped,
       {
         label: "Move to front",
-        description: "Move this pizza to the front of the list",
+        description: "Move this robot to the front of the list",
         handler: () => {
           this.keyboardMenu.setOptions( this.getOptions("root") );
         }

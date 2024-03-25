@@ -53,9 +53,9 @@ class SubmissionMenu {
         },
         {
           label: "Swap",
-          description: "Change to another pizza",
+          description: "Change to another robot",
           handler: () => { 
-            //See pizza options
+            //See robot options
             this.keyboardMenu.setOptions( this.getPages().replacements )
           }
         },
