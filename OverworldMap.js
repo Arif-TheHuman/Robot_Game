@@ -325,6 +325,23 @@ window.OverworldMaps = {
         src: "/images/characters/people/ProfessorOak.png",
         talking: [
           {
+            required: ["COMPLAINED"],
+            events: [
+              { type: "textMessage", text: "The economy is still tough!"},
+              { type: "textMessage", text: "I don't have any other starters for you!"},
+            ]
+          },
+          {
+            required: ["GOT_POKEMON"],
+            events: [
+              { type: "textMessage", text: "You chose Charmander? Good choice!", faceHero:"npcB" },
+              { type: "textMessage", text: "..............."},
+              { type: "textMessage", text: "Its the only available pokemon?"},
+              { type: "textMessage", text: "Well, you can't be picky! The economies bad!"},
+              { type: "addStoryFlag", flag: "COMPLAINED"},
+            ]
+          },
+          {
             events: [
               { type: "textMessage", text: "Hello kiddo! Go and pick your pokemon!", faceHero:"npcB" },
             ],
