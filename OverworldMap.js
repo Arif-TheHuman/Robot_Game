@@ -201,13 +201,15 @@ window.OverworldMaps = {
             events: [
               { type: "textMessage", text: "You're quite strong!", faceHero: "npcB" },
               { type: "textMessage", text: "If you keep it up, you'll be a champion in no time!" },
+              { who: "npcB", type: "stand", direction: "down"},
               //{ type: "battle", enemyId: "erio" }
             ]
           },
           {
             events: [
               { type: "textMessage", text: "Howdy!", faceHero: "npcB" },
-              { type: "addStoryFlag", flag: "TALKED_TO_AZALEA"}
+              { type: "addStoryFlag", flag: "TALKED_TO_AZALEA"},
+              { who: "npcB", type: "stand", direction: "down"},
               //{ type: "battle", enemyId: "erio" }
             ]
           },
@@ -261,6 +263,7 @@ window.OverworldMaps = {
             { who: "npcB", type: "stand",  direction: "right" },
             { type: "addStoryFlag", flag: "TALKED_TO_AZALEA"},
             { type: "textMessage", text:"Hey!"},
+            { who: "hero", type: "stand", direction: "left"},
             { type: "textMessage", text:"It's dangerous to get near the grass!"},
             { type: "textMessage", text:"There could be dangerous Pokemon!"},
             { type: "textMessage", text:".........."},
@@ -487,15 +490,15 @@ window.OverworldMaps = {
   },
   ruins: {
     id: "ruins",
-    lowerSrc: "/images/maps/testPlay.png",
+    lowerSrc: "/images/maps/ruins.png",
     upperSrc: "/images/maps/blank.png",
     gameObjects: {},
     configObjects: {
       hero: {
         type: "Person",
         isPlayerControlled: true,
-        x: utils.withGrid(20),
-        y: utils.withGrid(20),
+        x: utils.withGrid(39),
+        y: utils.withGrid(41),
       },
     },
     cutsceneSpaces: {}
