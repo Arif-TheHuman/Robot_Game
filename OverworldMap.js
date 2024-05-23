@@ -4,9 +4,9 @@ class OverworldMap {
     this.gameObjects = {}; // Live objects are in here
     this.configObjects = config.configObjects; // Configuration content
     
-    
     this.cutsceneSpaces = config.cutsceneSpaces || {};
     this.walls = config.walls || {};
+    this.grass = config.grass || {};
 
     this.lowerImage = new Image();
     this.lowerImage.src = config.lowerSrc;
@@ -50,6 +50,13 @@ class OverworldMap {
       return false;
     })
 
+  }
+
+  isSpaceGrass(currentX, currentY) {
+    if (this.grass && this.grass[`${currentX},${currentY}`]) {
+      return true;
+    }
+    return false;
   }
 
   mountObjects() {
@@ -114,7 +121,9 @@ class OverworldMap {
   
   checkForFootstepCutscene() {
     const hero = this.gameObjects["hero"];
+    const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
     const match = this.cutsceneSpaces[`${hero.x},${hero.y}`];
+    const grass = this.isSpaceGrass(hero.x, hero.y, hero.direction);
     if (!this.isCutscenePlaying && match) {
       const relevantScenario = match.find(scenario => {
         if (scenario.required) {
@@ -126,6 +135,13 @@ class OverworldMap {
         }
       });
       relevantScenario && this.startCutscene(relevantScenario.events);
+    } else if (!this.isCutscenePlaying && grass) {
+      if (Math.random() < 0.2) {
+        this.startCutscene([
+          { type: "textMessage", text: "A wild Pokemon appeared!" },
+          { type: "battle", enemyId: "Random1" }
+        ])
+      }
     }
   }
 }
@@ -239,6 +255,19 @@ window.OverworldMaps = {
         walls[utils.asGridCoord(x,y)] = true;
       })
       return walls;
+    }(),
+    grass: function() {
+      let grass = {};
+      let enemyIds = ["Azalea1", "kid1", "Random1"];
+      [
+        "72,255", "72,256", "72,257", "72,258", "72,259", 
+        "73,255", "73,256", "73,257", "73,258", "73,259", 
+      ]
+      .forEach(coord => {
+        let [x,y] = coord.split(",");
+        grass[utils.asGridCoord(x,y)] = true;
+      })
+      return grass;
     }(),
     cutsceneSpaces: {
       [utils.asGridCoord(73,261)]: [

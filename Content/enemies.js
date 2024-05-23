@@ -49,4 +49,15 @@ window.Enemies = {
       },
     }
   },
+  "Random1": {
+    name: "Azalea",
+    src: "/images/characters/people/arifahHero.png",
+    robots: {
+      "a": {
+        robotId: "001",
+        maxHp: 100,
+        level: 1,
+      },
+    }
+  },
 }
