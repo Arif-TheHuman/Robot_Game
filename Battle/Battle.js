@@ -87,7 +87,6 @@ class Battle {
 
       //Populate first active robot
 
-      console.log(this)
       this.activeCombatants[team] = this.activeCombatants[team] || id
   }
 

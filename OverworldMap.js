@@ -7,6 +7,7 @@ class OverworldMap {
     this.cutsceneSpaces = config.cutsceneSpaces || {};
     this.walls = config.walls || {};
     this.grass = config.grass || {};
+    this.enemyArea = config.enemyArea;
 
     this.lowerImage = new Image();
     this.lowerImage.src = config.lowerSrc;
@@ -64,7 +65,6 @@ class OverworldMap {
 
       let object = this.configObjects[key];
       object.id = key;
-      console.log(key, object);
 
       let instance;
       if (object.type === "Person") {
@@ -137,9 +137,10 @@ class OverworldMap {
       relevantScenario && this.startCutscene(relevantScenario.events);
     } else if (!this.isCutscenePlaying && grass) {
       if (Math.random() < 0.2) {
+        const enemyId = this.enemyArea.enemyId[Math.floor(Math.random() * this.enemyArea.enemyId.length)];
         this.startCutscene([
           { type: "textMessage", text: "A wild Pokemon appeared!" },
-          { type: "battle", enemyId: "Random1" }
+          { type: "battle", enemyId: enemyId }
         ])
       }
     }
@@ -258,7 +259,6 @@ window.OverworldMaps = {
     }(),
     grass: function() {
       let grass = {};
-      let enemyIds = ["Azalea1", "kid1", "Random1"];
       [
         "72,255", "72,256", "72,257", "72,258", "72,259", 
         "73,255", "73,256", "73,257", "73,258", "73,259", 
@@ -269,6 +269,9 @@ window.OverworldMaps = {
       })
       return grass;
     }(),
+    enemyArea: {
+      enemyId: ["Random1", "kid1", "Azalea1"]
+    },
     cutsceneSpaces: {
       [utils.asGridCoord(73,261)]: [
         {
