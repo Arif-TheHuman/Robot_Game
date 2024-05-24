@@ -50,11 +50,20 @@ window.Enemies = {
     }
   },
   "Random1": {
-    name: "Azalea",
-    src: "/images/characters/people/arifahHero.png",
+    name: "Bulbasaur",
     robots: {
       "a": {
         robotId: "001",
+        maxHp: 100,
+        level: 1,
+      },
+    }
+  },
+  "Random2": {
+    name: "Charmander",
+    robots: {
+      "a": {
+        robotId: "004",
         maxHp: 100,
         level: 1,
       },

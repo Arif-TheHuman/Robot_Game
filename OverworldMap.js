@@ -270,7 +270,7 @@ window.OverworldMaps = {
       return grass;
     }(),
     enemyArea: {
-      enemyId: ["Random1", "kid1", "Azalea1"]
+      enemyId: ["Random1", "Random2"]
     },
     cutsceneSpaces: {
       [utils.asGridCoord(73,261)]: [
