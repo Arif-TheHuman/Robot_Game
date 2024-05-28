@@ -103,3 +103,33 @@
   top: 104px;
   animation: slash-right 0.3s forwards;
 }
+
+.purpleStar {
+  position: absolute;
+  left: 170px;
+  top: 65px;
+  width:32px;
+  height:32px;
+  opacity: 0; /* Start as invisible */
+  animation: purpleStar 1s forwards; /* Apply the animation */
+}
+
+.purpleStar {
+  position: absolute;
+  left: 170px;
+  top: 65px;
+  width:32px;
+  height:32px;
+  opacity: 0; /* Start as invisible */
+  animation: purpleStar 1s forwards, battle-damage-blink 0.3s steps(2, start) infinite; /* Apply the animations */
+}
+
+@keyframes purpleStar {
+  0% { transform: scale(0.7); opacity: 0; }
+  50% { transform: scale(0.7); opacity: 1; } 
+  60%, 90%, 100% { transform: scale(0.7); opacity: 0; } 
+  80% { transform: scale(0.7); opacity: 1; } 
+  85% { transform: scale(1); opacity: 1; } /* Gets bigger */
+  95% { transform: scale(0.7); opacity: 1; } /* Gets smaller */
+}
+

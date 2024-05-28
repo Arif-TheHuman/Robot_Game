@@ -47,11 +47,11 @@ window.Robots = {
     ally_sprite: "/images/characters/robots/001_ally.png",
     enemy_sprite: "/images/characters/robots/001_enemy.png",
     icon: "/images/icons/fungi.png",
-    actions: [ "damage1", "Slash" ],
+    actions: [ "damage1", "Slash", "WorldCuttingSlash" ],
   },
   "004": {
     name: "Charmander",
-    description: "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.",
+    description: "Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.",
     type: RobotTypes.fungi,
     src: "/images/characters/robots/004.png",
     ally_sprite: "/images/characters/robots/004_ally.png",

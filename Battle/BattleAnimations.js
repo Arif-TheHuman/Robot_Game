@@ -59,4 +59,49 @@ window.BattleAnimations = {
     await utils.wait(420);
     onComplete();
   },
+
+  async WorldCuttingSlash(event, onComplete) {
+  const {caster} = event;
+  let div = document.createElement("div");
+  div.classList.add("slash");
+  div.classList.add("slash-right");
+
+  let img = document.createElement("img");
+  img.src = "./images/effects/slash.png";
+  div.appendChild(img);
+
+  // Create an audio element
+  let audio = new Audio('./path/to/your/audio/file.mp3');
+  audio.play();
+
+  //Remove class when animation is fully complete
+  div.addEventListener("animationend", () => {
+    div.remove();
+
+    // Stop the audio when the animation ends
+    audio.pause();
+    audio.currentTime = 0;
+
+    // Create a new div with an img tag for the purple star animation
+    let newDiv = document.createElement("div");
+    let newImg = document.createElement("img");
+    newDiv.classList.add("purpleStar");
+    newImg.src = "./images/effects/purpleStar.png";
+    newDiv.appendChild(newImg);
+
+    //Remove class when animation is fully complete
+    newDiv.addEventListener("animationend", () => {
+      newDiv.remove();
+    });
+
+    //Add to scene
+    document.querySelector(".Battle").appendChild(newDiv);
+  });
+
+  //Add to scene
+  document.querySelector(".Battle").appendChild(div);
+
+  await utils.wait(420);
+  onComplete();
+}
 }
