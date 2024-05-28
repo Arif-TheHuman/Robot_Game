@@ -10,7 +10,7 @@ class ChoosePokemon {
           label: "Yes",
           description: "Choose this Pokemon",
           handler: () => {
-            playerState.addPizza(this.robots);
+            playerState.addRobot(this.robots);
             playerState.storyFlags[this.storyFlag] = true;
             playerState.storyFlags["GOT_POKEMON"] = true;
             this.close();
@@ -27,12 +27,12 @@ class ChoosePokemon {
     }
   
     createElement() {
-      const pizzaName = window.Robots[this.robots].name;
+      const robotName = window.Robots[this.robots].name;
       this.element = document.createElement("div");
       this.element.classList.add("CraftingMenu");
       this.element.classList.add("overlayMenu");
       this.element.innerHTML = (`
-        <h2>Do you want to choose ${pizzaName} as your starter? </h2>
+        <h2>Do you want to choose ${robotName} as your starter? </h2>
       `)
     }
   

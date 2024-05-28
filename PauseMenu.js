@@ -8,7 +8,7 @@ class PauseMenu {
 
     //Case 1: Show the first page of options
     if (pageKey === "root") {
-      const lineupPizzas = playerState.lineup.map(id => {
+      const lineupRobots = playerState.lineup.map(id => {
         const {robotId} = playerState.robots[id];
         const base = Robots[robotId];
         return {
@@ -20,7 +20,7 @@ class PauseMenu {
         }
       })
       return [
-        ...lineupPizzas,
+        ...lineupRobots,
         {
           label: "Save",
           description: "Save your progress",

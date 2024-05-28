@@ -31,7 +31,7 @@ class BattleEvent {
       })
       
       //start blinking
-      target.pizzaElement.classList.add("battle-damage-blink");
+      target.robotElement.classList.add("battle-damage-blink");
     }
 
     if (recover) {
@@ -64,7 +64,7 @@ class BattleEvent {
     this.battle.enemyTeam.update();
 
     //stop blinking
-    target.pizzaElement.classList.remove("battle-damage-blink");
+    target.robotElement.classList.remove("battle-damage-blink");
     resolve();
   }
 

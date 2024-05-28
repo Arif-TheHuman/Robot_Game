@@ -139,13 +139,13 @@ class Battle {
         if (winner === "player") {
           const playerState = window.playerState;
           Object.keys(playerState.robots).forEach(id => {
-            const playerStatePizza = playerState.robots[id];
+            const playerStateRobot = playerState.robots[id];
             const combatant = this.combatants[id];
             if (combatant) {
-              playerStatePizza.hp = combatant.hp;
-              playerStatePizza.xp = combatant.xp;
-              playerStatePizza.maxXp = combatant.maxXp;
-              playerStatePizza.level = combatant.level;
+              playerStateRobot.hp = combatant.hp;
+              playerStateRobot.xp = combatant.xp;
+              playerStateRobot.maxXp = combatant.maxXp;
+              playerStateRobot.level = combatant.level;
             }
           })
 

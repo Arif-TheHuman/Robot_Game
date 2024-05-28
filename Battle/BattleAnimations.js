@@ -1,6 +1,6 @@
 window.BattleAnimations = {
   async spin(event, onComplete) {
-    const element = event.caster.pizzaElement;
+    const element = event.caster.robotElement;
     const animationClassName = event.caster.team === "player" ? "battle-spin-right" : "battle-spin-left";
     element.classList.add(animationClassName);
 
@@ -36,5 +36,9 @@ window.BattleAnimations = {
 
     await utils.wait(820);
     onComplete();
-  }
+  },
+  
+  async WorldCuttingSlash(event, onComplete) {
+
+  },
 }

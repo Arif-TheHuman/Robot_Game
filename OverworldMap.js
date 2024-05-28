@@ -73,8 +73,8 @@ class OverworldMap {
       if (object.type === "Pokeball") {
         instance = new Pokeball(object);
       }
-      if (object.type === "PizzaStone") {
-        instance = new PizzaStone(object);
+      if (object.type === "RobotStone") {
+        instance = new RobotStone(object);
       }
       this.gameObjects[key] = instance;
       this.gameObjects[key].id = key;
@@ -240,7 +240,7 @@ window.OverworldMaps = {
         //   { type: "walk",  direction: "down" },
         // ]
       },
-      // pizzaStone {
+      // robotStone {
       //   type: "Pokeball",
       //   x: utils.withGrid(66),
       //   y: utils.withGrid(261),

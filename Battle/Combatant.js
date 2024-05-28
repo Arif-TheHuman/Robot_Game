@@ -47,15 +47,15 @@ class Combatant {
       <p class="Combatant_status"></p>
     `);
 
-    this.pizzaElement = document.createElement("img");
-    this.pizzaElement.classList.add("Robot");
+    this.robotElement = document.createElement("img");
+    this.robotElement.classList.add("Robot");
     if (this.team === "player") {
-        this.pizzaElement.setAttribute("src", "ally/"+this.src);
+        this.robotElement.setAttribute("src", "ally/"+this.src);
     } else if (this.team === "enemy") {
-        this.pizzaElement.setAttribute("src", "enemy/"+this.src);
+        this.robotElement.setAttribute("src", "enemy/"+this.src);
     }
-    this.pizzaElement.setAttribute("alt", this.name );
-    this.pizzaElement.setAttribute("data-team", this.team );
+    this.robotElement.setAttribute("alt", this.name );
+    this.robotElement.setAttribute("data-team", this.team );
 
     this.hpFills = this.hudElement.querySelectorAll(".Combatant_life-container > rect");
     this.xpFills = this.hudElement.querySelectorAll(".Combatant_xp-container > rect");
@@ -69,7 +69,7 @@ class Combatant {
 
     //Update active flag to show the correct robot & hud
     this.hudElement.setAttribute("data-active", this.isActive);
-    this.pizzaElement.setAttribute("data-active", this.isActive);
+    this.robotElement.setAttribute("data-active", this.isActive);
 
     //Update HP & XP percent fills
     this.hpFills.forEach(rect => rect.style.width = `${this.hpPercent}%`)
@@ -129,7 +129,7 @@ class Combatant {
   init(container) {
     this.createElement();
     container.appendChild(this.hudElement);
-    container.appendChild(this.pizzaElement);
+    container.appendChild(this.robotElement);
     this.update();
   }
 

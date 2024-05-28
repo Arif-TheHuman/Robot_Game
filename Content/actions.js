@@ -36,6 +36,17 @@ window.Actions = {
       { type: "stateChange", damage: 10000}
     ]
   },
+  WorldCuttingSlash: {
+    name: "World Cutting Slash",
+    description: "A devastating slash that cleaves the very fabric of reality",
+    success: [
+      { type: "textMessage", text: "SCALE OF THE DRAGON"},
+      { type: "textMessage", text: "RECOIL"},
+      { type: "textMessage", text: "TWIN METEORS"},
+      { type: "animation", animation: "WorldCuttingSlash"},
+      { type: "stateChange", damage: 10000}
+    ]
+  },
   //Items
   item_recoverStatus: {
     name: "Heating Lamp",

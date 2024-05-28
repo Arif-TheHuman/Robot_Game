@@ -1,4 +1,4 @@
-class PizzaStone extends GameObject {
+class RobotStone extends GameObject {
     constructor(config) {
       super(config);
       this.sprite = new Sprite({

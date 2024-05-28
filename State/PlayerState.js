@@ -44,7 +44,7 @@ class PlayerState {
     resolve();
   };
 
-  addPizza(robotId) {
+  addRobot(robotId) {
     const newId = `p${Date.now()}` + Math.floor(Math.random() * 100);
     this.robots[newId]  = {
       robotId,
