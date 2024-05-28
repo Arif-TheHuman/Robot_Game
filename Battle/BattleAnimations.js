@@ -38,7 +38,25 @@ window.BattleAnimations = {
     onComplete();
   },
   
-  async WorldCuttingSlash(event, onComplete) {
-
+  async Slash(event, onComplete) {
+    const {caster} = event;
+    let div = document.createElement("div");
+    div.classList.add("slash");
+    div.classList.add("slash-right");
+  
+    let img = document.createElement("img");
+    img.src = "./images/effects/slash.png";
+    div.appendChild(img);
+  
+    //Remove class when animation is fully complete
+    div.addEventListener("animationend", () => {
+      div.remove();
+    });
+  
+    //Add to scene
+    document.querySelector(".Battle").appendChild(div);
+  
+    await utils.wait(420);
+    onComplete();
   },
 }

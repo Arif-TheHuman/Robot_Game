@@ -32,7 +32,7 @@ window.Actions = {
     description: "Kills the opponent",
     success: [
       { type: "textMessage", text: "{CASTER} uses {ACTION}!"},
-      { type: "animation", animation: "spin"},
+      { type: "animation", animation: "glob"},
       { type: "stateChange", damage: 10000}
     ]
   },
@@ -45,6 +45,15 @@ window.Actions = {
       { type: "textMessage", text: "TWIN METEORS"},
       { type: "animation", animation: "WorldCuttingSlash"},
       { type: "stateChange", damage: 10000}
+    ]
+  },
+  Slash: {
+    name: "Slash",
+    description: "A simple slash attack",
+    success: [
+      { type: "textMessage", text: "{CASTER} uses {ACTION}!"},
+      { type: "animation", animation: "Slash"},
+      { type: "stateChange", damage: 30}
     ]
   },
   //Items

@@ -87,3 +87,19 @@
   top: 56px;
   animation: battle-glob-left 1s forwards;
 }
+
+.slash {
+  position: absolute;
+  width:32px;
+  height:32px;
+}
+
+@keyframes slash-right {
+  0% { transform: translate3d(0,0,0) scale(1); opacity: 1}
+  100% {  transform: translate3d(149px, -20px, 0) scale(1.5);opacity:1 }
+}
+.slash-right {
+  left: 70px;
+  top: 104px;
+  animation: slash-right 0.3s forwards;
+}

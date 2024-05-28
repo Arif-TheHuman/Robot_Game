@@ -3,8 +3,8 @@ class PlayerState {
     this.robots = {
       "p1": {
         robotId: "001",
-        hp: 50,
-        maxHp: 50,
+        hp: 10000,
+        maxHp: 10000,
         xp: 0,
         maxXp: 100,
         level: 1,
