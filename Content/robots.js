@@ -47,7 +47,7 @@ window.Robots = {
     ally_sprite: "/images/characters/robots/001_ally.png",
     enemy_sprite: "/images/characters/robots/001_enemy.png",
     icon: "/images/icons/fungi.png",
-    actions: [ "damage1", "Slash", "WorldCuttingSlash" ],
+    actions: [ "damage1", "Slash", "WorldCuttingSlash", "HollowPurple" ],
   },
   "004": {
     name: "Charmander",

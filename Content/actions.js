@@ -56,6 +56,17 @@ window.Actions = {
       { type: "stateChange", damage: 30}
     ]
   },
+  HollowPurple: {
+    name: "Hollow Purple",
+    description: "Combining Attraction and Repulsion, it creates an energy sphere that obliterates everything in its path.",
+    success: [
+      { type: "animation", animation: "hollowPurple"},
+      { type: "textMessage", text: "Imaginary Technique"},
+      { type: "textMessage", text: "Purple."},
+      { type: "animation", animation: "finishingHollowPurple"},
+      { type: "stateChange", damage: 10000},
+    ]
+  },
   //Items
   item_recoverStatus: {
     name: "Heating Lamp",

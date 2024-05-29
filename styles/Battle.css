@@ -96,7 +96,7 @@
 
 @keyframes slash-right {
   0% { transform: translate3d(0,0,0) scale(1); opacity: 1}
-  100% {  transform: translate3d(149px, -20px, 0) scale(1.5);opacity:1 }
+  100% {  transform: translate3d(170px, -40px, 0) scale(1.5);opacity:1 }
 }
 .slash-right {
   left: 70px;
@@ -111,25 +111,64 @@
   width:32px;
   height:32px;
   opacity: 0; /* Start as invisible */
-  animation: purpleStar 1s forwards; /* Apply the animation */
-}
-
-.purpleStar {
-  position: absolute;
-  left: 170px;
-  top: 65px;
-  width:32px;
-  height:32px;
-  opacity: 0; /* Start as invisible */
-  animation: purpleStar 1s forwards, battle-damage-blink 0.3s steps(2, start) infinite; /* Apply the animations */
+  animation: purpleStar 1.5s forwards, battle-damage-blink 0.3s steps(2, start) infinite; /* Apply the animations */
 }
 
 @keyframes purpleStar {
-  0% { transform: scale(0.7); opacity: 0; }
-  50% { transform: scale(0.7); opacity: 1; } 
-  60%, 90%, 100% { transform: scale(0.7); opacity: 0; } 
-  80% { transform: scale(0.7); opacity: 1; } 
-  85% { transform: scale(1); opacity: 1; } /* Gets bigger */
-  95% { transform: scale(0.7); opacity: 1; } /* Gets smaller */
+  0% { transform: scale(0.7); opacity: 0; }   /* Start as invisible */
+  25% { transform: scale(0.7); opacity: 1; }  /* Appear */
+  75% { transform: scale(0.7); opacity: 1; }  /* Reappear */
+  100% { transform: scale(0.7); opacity: 0; } /* Finally disappear */
 }
 
+.blue-circle, .red-circle, .purple-circle {
+  position: absolute;
+  width:32px;
+  height:32px;
+}
+
+@keyframes circle-left {
+  0% { transform: translate3d(0,0,0) scale(1); opacity: 1}
+  50% { transform: translate3d(160px,0,0) scale(1); opacity: 1; }
+  100% { transform: translate3d(160px,0,0) scale(1); opacity: 0; }
+}
+
+.circle-left {
+  left: 0px;
+  top: 100px;
+  animation: circle-left 1s forwards;
+}
+
+@keyframes circle-right {
+  0% { transform: translate3d(0,0,0) scale(1); opacity: 1}
+  50% { transform: translate3d(-160px,0,0) scale(1); opacity: 1; }
+  100% { transform: translate3d(-160px,0,0) scale(1); opacity: 0; }
+}
+
+.circle-right {
+  right: 0px;
+  top: 100px;
+  animation: circle-right 1s forwards;
+}
+
+@keyframes purple-circle {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(2); opacity: 1; }
+}
+
+.purple-circle {
+  left: 162px;
+  top: 100px;
+  animation: purple-circle 1s forwards;
+}
+
+@keyframes finishingHollowPurple {
+  0% { transform: translate3d(0,0,0) scale(2); opacity: 1}
+  100% { transform: translate3d(500px,-250px,0) scale(2); opacity: 0; }
+}
+
+.finishingHollowPurple {
+  right: 0px;
+  top: 50%;
+  animation: finishingHollowPurple 1s forwards;
+}
