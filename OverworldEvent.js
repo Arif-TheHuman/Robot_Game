@@ -1,7 +1,8 @@
 class OverworldEvent {
-  constructor({ map, event}) {
+  constructor({ map, event, sender}) {
     this.map = map;
     this.event = event;
+    this.sender = sender;
   }
 
   stand(resolve) {
@@ -46,17 +47,17 @@ class OverworldEvent {
   }
 
   textMessage(resolve) {
-
     if (this.event.faceHero) {
       const obj = this.map.gameObjects[this.event.faceHero];
       obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
     }
-
+  
     const message = new TextMessage({
       text: this.event.text,
-      onComplete: () => resolve()
+      onComplete: () => resolve(),
+      sender: this.sender
     })
-    message.init( document.querySelector(".game-container") )
+    message.init(document.querySelector(".game-container"))
   }
 
   changeMap(resolve) {

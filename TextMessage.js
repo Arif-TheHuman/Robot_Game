@@ -1,12 +1,12 @@
 class TextMessage {
-  constructor({ text, onComplete }) {
+  constructor({ text, onComplete, sender }) {
     this.text = text;
     this.onComplete = onComplete;
     this.element = null;
+    this.sender = sender;
   }
 
   createElement() {
-    //Create the element
     this.element = document.createElement("div");
     this.element.classList.add("TextMessage");
 
@@ -28,7 +28,15 @@ class TextMessage {
 
     this.actionListener = new KeyPressListener("Enter", () => {
       this.done();
-    })
+    });
+
+    if (this.sender === 'player'){
+      const profile = document.createElement('img');
+      profile.src = './images/characters/profile/gojo.png';
+      profile.classList.add('TextMessage_profile');
+
+      this.element.appendChild(profile);
+    }
 
   }
 

@@ -89,11 +89,13 @@ class OverworldMap {
       const eventHandler = new OverworldEvent({
         event: events[i],
         map: this,
+        sender: events[i].sender,
       })
       const result = await eventHandler.init();
       if (result === "LOST_BATTLE") {
         break;
       }
+      console.log(events[i].sender);
     }
 
     this.isCutscenePlaying = false;
@@ -362,6 +364,7 @@ window.OverworldMaps = {
           {
             required: ["COMPLAINED"],
             events: [
+              { type: "textMessage", text: "Hey Professor! Got any pokemon now?", faceHero:"npcB", sender: 'player' },
               { type: "textMessage", text: "The economy is still tough!", faceHero:"npcB"},
               { type: "textMessage", text: "I don't have any other starters for you!"},
               { who: "npcB", type: "stand",  direction: "down" },
@@ -421,9 +424,9 @@ window.OverworldMaps = {
           events: [
             { 
               type: "changeMap", 
-              map: "Outside" ,
-              x: utils.withGrid(76),
-              y: utils.withGrid(273),
+              map: "RobotMapDemo" ,
+              x: utils.withGrid(1),
+              y: utils.withGrid(3),
               direction: "down",
             }
           ]
@@ -535,4 +538,18 @@ window.OverworldMaps = {
     },
     cutsceneSpaces: {}
   },
+  RobotMapDemo: {
+    id: "RobotMapDemo",
+    lowerSrc: "/images/maps/robotMapDemo.png",
+    upperSrc: "/images/maps/blank.png",
+    gameObjects: {},
+    configObjects: {
+      hero: {
+        type: "Person",
+        isPlayerControlled: true,
+        x: utils.withGrid(1),
+        y: utils.withGrid(3),
+      },
+    }
+  }
 }
