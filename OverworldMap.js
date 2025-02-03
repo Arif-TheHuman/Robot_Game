@@ -311,6 +311,7 @@ window.OverworldMaps = {
             { type: "textMessage", text:"................"},
             { type: "textMessage", text:"Azalea: I guess you're a silent type"},
             { type: "textMessage", text:"Azalea: I hope to see you stronger, champion in the making!"},
+            { who: "npcB", type: "stand",  direction: "down" },
           ]
         },
       ],
