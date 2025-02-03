@@ -3,38 +3,47 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 36px;
-  padding: 4px;
-  background: var(--menu-background);
-  border-top: 1px solid var(--menu-border-color);
-  color: var(--menu-font-color);
+  background: black;
+  border: 2px solid white;
+  color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  font-family: 'Determination Mono', monospace;
+  padding: 10px;
 }
+
 .TextMessage_p {
   margin: 0;
-  font-size: 12px;
+  font-size: 8px;
   flex-grow: 1;
+  line-height: 1.5;
 }
+
 .TextMessage span {
   opacity: 0;
 }
+
 .TextMessage span.revealed {
   opacity: 1;
 }
+
 .TextMessage_button {
   margin: 0;
-  font-size: 8px;  
+  font-size: 16px;
   padding:0;
   -webkit-appearance: none;
   background:none;
   border:0;
   font-family: inherit;
   cursor: pointer;
+  color: white;
 }
+
 .TextMessage_profile {
   width: 36px;
   height: 36px;
   object-fit: cover;
+  border-radius: 50%; /* Make the image circular */
+  margin-right: 10px;
 }

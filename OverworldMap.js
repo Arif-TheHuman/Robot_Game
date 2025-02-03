@@ -424,9 +424,9 @@ window.OverworldMaps = {
           events: [
             { 
               type: "changeMap", 
-              map: "RobotMapDemo" ,
-              x: utils.withGrid(1),
-              y: utils.withGrid(3),
+              map: "Outside" ,
+              x: utils.withGrid(76),
+              y: utils.withGrid(273),
               direction: "down",
             }
           ]

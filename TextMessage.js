@@ -35,7 +35,8 @@ class TextMessage {
       profile.src = './images/characters/profile/gojo.png';
       profile.classList.add('TextMessage_profile');
 
-      this.element.appendChild(profile);
+      // Insert the profile at the beginning of the element
+      this.element.insertBefore(profile, this.element.firstChild);
     }
 
   }
